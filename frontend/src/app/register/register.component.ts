@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
       type: 'success',
       title: 'You are successfully registered with Monster Hub',
       showConfirmButton: false,
-      timer: 1500
+      timer: 3000
     })
     // alert("Registered Successfully.....")
     //console.log("Inside ADDD-----------------", data);
