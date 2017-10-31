@@ -81,78 +81,86 @@ exports.registerUser = function (req, res, next) {
 @last_modified: 5 sept
 @modified_by: [akshayP,sandeepK]
 */
-// exports.loginUser = function (req, res) {
-//     console.log("i m in login......................")
-//     User.findOne({
-//         email: req.body.email,
-//         password: req.body.password
-//     }, function (err, authResult) {
-//         if (err) {
-//             console.log(err)
-//         }
-//         if (authResult) {
-
-//             var payload = {
-//                 _id: authResult._id
-//             };
-//             var token = jsonwebtoken.sign(payload, 'secretKey');
-//             console.log(token, "token____________________________________");
-
-//             User.update({
-//                 email: req.body.email
-//             }, {
-
-//                 token: token
-
-//             }, (err, data) => {
-//                 console.log("error->>" + err, 'data->>' + JSON.stringify(data));
-//             });
-//             console.log("TOKEn", token)
-
-//             res.json({
-//                 status: 299,
-//                 success: true,
-//                 message: 'Enjoy your token!',
-//                 token: token,
-//                 email: req.body.email
-//             });
-//         } else {
-//             return res.status(200).send({});
-//         }
-
-//     });
-
-//     //res.send(authResult);
-// };
-
-
-
-
 exports.loginUser = function (req, res) {
-    console.log("data received", req.body);
-
+    console.log("i m in login......................")
     User.findOne({
         email: req.body.email,
         password: req.body.password
-    }, function (err, userlogin) {
+    }, function (err, authResult) {
         if (err) {
             console.log(err)
-        }
-        if (!userlogin) {
-            console.log("200", userlogin)
-            return res.status(200).send({});
+        } else if (authResult) {
+            console.log("authResult  ", authResult);
+            var payload = {
+                _id: authResult._id
+            };
+            var token = jsonwebtoken.sign(payload, 'secretKey');
+            console.log(token, "  jwt token____________________________________");
+
+            User.update({
+                email: req.body.email
+            }, {
+                $set: {
+                    token: token
+
+                }
+            }, function (err, data) {
+
+                if (err) {
+                    console.log(" err in update ", err);
+                } else {
+                    console.log('data->>', data);
+
+                }
+            });
+            console.log("TOKEn ", token)
+
+            res.json({
+                status: 200,
+                success: true,
+                message: 'Enjoy your token!',
+                token: token,
+                email: req.body.email
+            });
         } else {
-            console.log("299")
-            return res.status(299).send({});
+            res.json({
+                status: 299
+            });
         }
-
-
 
     });
 
-
-
+    //res.send(authResult);
 };
+
+
+
+
+// exports.loginUser = function (req, res) {
+//     console.log("data received", req.body);
+
+//     User.findOne({
+//         email: req.body.email,
+//         password: req.body.password
+//     }, function (err, userlogin) {
+//         if (err) {
+//             console.log(err)
+//         }
+//         if (!userlogin) {
+//             console.log("200", userlogin)
+//             return res.status(200).send({});
+//         } else {
+//             console.log("299")
+//             return res.status(299).send({});
+//         }
+
+
+
+//     });
+
+
+
+// };
 
 
 

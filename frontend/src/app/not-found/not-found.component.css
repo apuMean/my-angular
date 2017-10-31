@@ -5,3 +5,8 @@
   font-family: 'Creepster', cursive;
   text-decoration: none !important;
 }
+
+img.center {
+  display: block;
+  margin: 0 auto;
+}

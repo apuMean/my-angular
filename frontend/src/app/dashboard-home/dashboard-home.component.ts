@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewUsersService } from './../services/view-users.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import swal from 'sweetalert2';
 @Component({
   selector: 'app-dashboard-home',
   templateUrl: './dashboard-home.component.html',
@@ -37,7 +38,22 @@ export class DashboardHomeComponent implements OnInit {
 
   }
   delete(i) {
-    var a = confirm("Are you sure , you want to delete...?");
+    var a = swal({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then(function () {
+      swal(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+      )
+    });
+    // var a = confirm("Are you sure , you want to delete...?");
     if (a) {
       this.user.delete(i);
     }
@@ -55,7 +71,25 @@ export class DashboardHomeComponent implements OnInit {
 
   }
   update1(firstname, lastname, email, contact) {
+    swal({
+      title: 'Processing Update',
+      timer: 3000,
+      onOpen: function () {
+        swal.showLoading()
+      }
+    }).then(
+      function () { },
+      // handling the promise rejection
+      function (dismiss) {
+        if (dismiss === 'timer') {
+          console.log('I was closed by the timer')
+        }
+      }
+      );
+
+
     this.user.update(firstname, lastname, email, contact);
+
 
 
   }

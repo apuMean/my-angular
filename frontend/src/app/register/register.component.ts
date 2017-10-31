@@ -37,13 +37,21 @@ export class RegisterComponent implements OnInit {
   }
 
   public onSubmit(data) {
-    swal(
-      'Welcome to Monsters hub..!',
-      'Registration successful',
-      'success'
-    )
+    // swal(
+    //   'Welcome to Monsters hub..!',
+    //   'Registration successful',
+    //   'success'
+    // )
+    swal({
+      position: 'top-right',
+      type: 'success',
+      title: 'You are successfully registered with Monster Hub',
+      showConfirmButton: false,
+      timer: 1500
+    })
     // alert("Registered Successfully.....")
     //console.log("Inside ADDD-----------------", data);
+    //Validators.minLength(8), Validators.maxLength(15), Validators.pattern('^[a-zA-Z0-9]*$')
     this.user.save(data);
   }
 

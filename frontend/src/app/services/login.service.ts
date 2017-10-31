@@ -24,33 +24,50 @@ export class LoginService {
     console.log("setUserLoggedIn service called");
     this.isUserLoggedIn = true;
   }
+
+
   getUserLoggedIn() {
     console.log("getUserLoggedIn service called");
-
-
-    return this.isUserLoggedIn;
+    if (localStorage.getItem('token')) {
+      console.log("localStorage.getItem('token')", localStorage.getItem('token'))
+      return true;
+    }
+    else {
+      console.log('getuserloggedin error')
+      return false;
+    }
   }
+
+
+
+
 
 
   save(data): Observable<any> {
     console.log("hdfsgfdhx", data);
 
     this.http.post(this.connection, data, { headers: this.headers }).subscribe((result) => {
+
       if (result.status == 200) {
-        console.log("in dashboard", result.status)
-        alert("invalid user");
-        this.router.navigate(['/']);
-
-      }
-      if (result.status == 299) {
         console.log("in mainpage", result.status)
-        console.log("Login success");
-
+        console.log("Login success result data", result);
+        localStorage.setItem('token', result.json().token);
         this.setUserLoggedIn();
         localStorage.setItem('userloggedin', "true");
         localStorage.setItem('email', result.json().email);
         this.router.navigate(['/dashboard']);
       }
+      else if (result.status == 299) {
+
+        console.log("in dashboard", result.status)
+        alert("invalid user");
+        this.router.navigate(['/']);
+
+      }
+      else {
+        console.log(" else ");
+      }
+
 
     });
     return;
