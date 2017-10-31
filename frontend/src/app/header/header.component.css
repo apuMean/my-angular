@@ -1,0 +1,31 @@
+.buttons {
+  text-align: right;
+  margin-top: 30px
+}
+
+.modal-content {
+  display: initial;
+}
+
+.tag {
+  width: 100px;
+  height: 70px;
+  color: #f70000;
+  font-size: 60px;
+  font-family: 'Creepster', cursive;
+  text-decoration: none !important;
+}
+
+.top {
+  /* background-color: #684dbb; */
+  background: url('./../../../src/assets/images/logo.png') no-repeat;
+  background-size: 120px 80px;
+}
+
+hr.style13 {
+  height: 5px;
+  border: 0;
+  box-shadow: 0 10px 10px -10px black inset;
+  margin-top: 0rem;
+  margin-bottom: auto;
+}

@@ -1,0 +1,36 @@
+.tag {
+  text-align: center;
+  color: black;
+  font-size: 60px;
+  font-family: 'Creepster', cursive;
+  text-decoration: none !important;
+}
+
+.wrapper {
+  text-align: center;
+}
+
+.submit_button {
+  position: absolute;
+  margin: auto;
+}
+
+.link {
+  position: relative;
+  margin-left: 70px;
+}
+
+.ng-valid.required {
+  border-left: 5px solid pink;
+  /* green */
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #a94442;
+  /* red */
+}
+
+.ng-valid:not(form) {
+  border-left: 5px solid #42A948;
+  /* red */
+}

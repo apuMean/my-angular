@@ -1,0 +1,25 @@
+<p class="tag">Login to Explore More..</p>
+<form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit(loginForm.value) ">
+  <div class="container">
+
+    <div class="form-group">
+
+      <input type="email" name="email" formControlName="email" class="form-control" id="email" placeholder="Enter Your Email 'example@abc.com'">
+
+    </div>
+
+    <div class="form-group">
+
+      <input type="password" name="password" formControlName="password" class="form-control" id="password" placeholder="Enter Your Password(alphabets & numbers only)">
+
+    </div>
+
+
+    <div class="wrapper">
+      <button type="submit" [disabled]="!loginForm.valid" class="submit_button btn btn-primary">Login</button>
+      <a class="link" href="/register">New User? Register here..</a>
+    </div>
+
+
+  </div>
+</form>
