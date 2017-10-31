@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 
 import { LoginService } from './services/login.service';
 import { SignupService } from './services/register.service';
@@ -28,7 +29,7 @@ const appRoutes: Routes = [
   { path: '', component: MainBodyComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'dashboard', canActivate: [AuthGuard], component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: '**', component: NotFoundComponent },
 ];
 @NgModule({
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FormsModule,
     NgbModule.forRoot(),
+    NgxPaginationModule,
 
 
   ],

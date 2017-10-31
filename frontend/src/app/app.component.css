@@ -11,15 +11,22 @@
   }
 
   #header {
+    position: relative;
+    background-color: Transparent;
+    left: 0px;
+    right: 0px;
+    height: 100%;
+    z-index: 2;
     background: #3d1d56;
     padding: 10px;
+    overflow: hidden;
   }
 
   #body {
-    padding: 10px;
-    padding-bottom: 20px;
     position: relative;
     /* Height of the footer */
+    /* background-color: #7e5f98; */
+    overflow: auto;
   }
 
   #footer {
@@ -29,4 +36,5 @@
     height: 40px;
     /* Height of the footer */
     background: #3d1d56;
+    overflow: hidden;
   }

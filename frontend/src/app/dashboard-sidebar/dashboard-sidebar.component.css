@@ -14,10 +14,11 @@
 
 #sidebar-wrapper {
   z-index: 1000;
-  position: fixed;
+  /* position: fixed; */
+  position: relative;
   left: 250px;
   width: 0;
-  height: auto;
+  height: 476px;
   margin-left: -250px;
   overflow-y: auto;
   background: #3d1d56;

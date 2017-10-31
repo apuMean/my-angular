@@ -19,7 +19,7 @@
 
     </tr>
 
-    <tr *ngFor="let x of getData  let i = index">
+    <tr *ngFor="let x of getData | paginate: { itemsPerPage: pageSize, currentPage: p }; let i = index">
 
 
       <td>
@@ -45,6 +45,7 @@
 
 
   </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
 
 

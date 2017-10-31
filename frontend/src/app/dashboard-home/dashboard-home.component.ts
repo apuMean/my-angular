@@ -7,7 +7,8 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./dashboard-home.component.css']
 })
 export class DashboardHomeComponent implements OnInit {
-
+  p: number = 1;
+  pageSize: number = 6;
   closeResult: string;
   getData: any = [];
   firstname: any;
@@ -36,8 +37,10 @@ export class DashboardHomeComponent implements OnInit {
 
   }
   delete(i) {
-    alert("Are you sure , you want to delete...?")
-    this.user.delete(i);
+    var a = confirm("Are you sure , you want to delete...?");
+    if (a) {
+      this.user.delete(i);
+    }
   }
 
 
