@@ -5,6 +5,7 @@ import 'rxjs/add/operator/toPromise';
 import { UsersSignUp } from "./../register/signup";
 import { SignupService } from './../services/register.service';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import swal from 'sweetalert2';
 
 
 @Component({
@@ -16,14 +17,7 @@ import { ReactiveFormsModule, FormControl, FormGroup, Validators, FormBuilder } 
 
 @Injectable()
 export class RegisterComponent implements OnInit {
-
-
-
-
-
-
-
-
+  // swal: any;
   signupForm: FormGroup;
 
   constructor(private user: SignupService, public fb: FormBuilder) {
@@ -43,8 +37,12 @@ export class RegisterComponent implements OnInit {
   }
 
   public onSubmit(data) {
-
-    alert("Registered Successfully.....")
+    swal(
+      'Welcome to Monsters hub..!',
+      'Registration successful',
+      'success'
+    )
+    // alert("Registered Successfully.....")
     //console.log("Inside ADDD-----------------", data);
     this.user.save(data);
   }

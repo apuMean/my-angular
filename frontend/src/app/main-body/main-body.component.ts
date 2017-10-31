@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 //import { Logger } from "angular2-logger/core"; // ADD THIS
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-
+// import { SweetAlertService } from 'angular-sweetalert-service';
 
 @Component({
   selector: 'app-main-body',
@@ -16,10 +16,21 @@ export class MainBodyComponent implements OnInit {
     config.interval = 5000;
     config.wrap = false;
     config.keyboard = false;
+
   }
 
   ngOnInit() {
 
   }
-
+  // , private alertService: SweetAlertService
+  // const options = {
+  //   title: 'Are you sure?',
+  //   text: "You won't be able to revert this!",
+  //   type: 'warning',
+  //   showCancelButton: true,
+  //   confirmButtonColor: '#3085d6',
+  //   cancelButtonColor: '#d33',
+  //   confirmButtonText: 'Yes, delete it!'
+  // };
+  // SweetAlert.confirm(options);
 }

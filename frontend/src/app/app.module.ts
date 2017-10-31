@@ -15,6 +15,8 @@ import { RegisterComponent } from './register/register.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
+import { SweetAlertService } from 'angular-sweetalert-service';
+
 
 import { LoginService } from './services/login.service';
 import { SignupService } from './services/register.service';
@@ -29,7 +31,7 @@ const appRoutes: Routes = [
   { path: '', component: MainBodyComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', canActivate: [AuthGuard], component: DashboardComponent },
   { path: '**', component: NotFoundComponent },
 ];
 @NgModule({
@@ -57,7 +59,7 @@ const appRoutes: Routes = [
 
 
   ],
-  providers: [LoginService, Logger, SignupService, AuthGuard, ViewUsersService],
+  providers: [LoginService, Logger, SignupService, AuthGuard, ViewUsersService, SweetAlertService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -26,7 +26,7 @@
     position: relative;
     /* Height of the footer */
     /* background-color: #7e5f98; */
-    overflow: auto;
+    height: 100%;
   }
 
   #footer {
