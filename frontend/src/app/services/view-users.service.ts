@@ -42,7 +42,6 @@ export class ViewUsersService {
   }
 
 
-
   updateee(i) {
     this.editid = i;
     console.log("Update id", this.editid);

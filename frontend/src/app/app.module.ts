@@ -24,7 +24,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar.component';
 import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component'
 import { ViewUsersService } from './services/view-users.service'
-import { Logger } from "angular2-logger/core"; // ADD THIS
+import { Logger } from "angular2-logger/core";
+import { DashboardWelcomeComponent } from './dashboard-welcome/dashboard-welcome.component';
+import { DashboardAdduserComponent } from './dashboard-adduser/dashboard-adduser.component'; // ADD THIS
 
 const appRoutes: Routes = [
   // { path: 'dashboard', canActivate: [AuthGuard], component: DashboardComponent },
@@ -32,7 +34,11 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'dashboard', canActivate: [AuthGuard], component: DashboardComponent },
+  { path: 'viewusers', component: DashboardHomeComponent },
+  { path: 'welcome', component: DashboardWelcomeComponent },
+  { path: 'newuser', component: DashboardAdduserComponent },
   { path: '**', component: NotFoundComponent },
+
 ];
 @NgModule({
   declarations: [
@@ -45,7 +51,9 @@ const appRoutes: Routes = [
     NotFoundComponent,
     DashboardComponent,
     DashboardSidebarComponent,
-    DashboardHomeComponent
+    DashboardHomeComponent,
+    DashboardWelcomeComponent,
+    DashboardAdduserComponent
   ],
   imports: [
     BrowserModule,

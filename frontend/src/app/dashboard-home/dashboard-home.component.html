@@ -1,81 +1,88 @@
-<div class="table-responsive">
-  <table class="table table-bordered">
-    <tr>
-      <th>
-        First Name
-      </th>
-      <th>
-        Last Name
-      </th>
-      <th>
-        Email
-      </th>
-      <th>
-        Contact
-      </th>
-      <th>
-        Edit/Delete options
-      </th>
+<div class="row">
+  <div class="col-sm-2 col-md-2 col-xs-2">
+    <app-dashboard-sidebar></app-dashboard-sidebar>
+  </div>
+  <div class="col-sm-10 col-md-10 col-xs-10">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <tr>
+          <th>
+            First Name
+          </th>
+          <th>
+            Last Name
+          </th>
+          <th>
+            Email
+          </th>
+          <th>
+            Contact
+          </th>
+          <th>
+            Edit/Delete options
+          </th>
 
-    </tr>
+        </tr>
 
-    <tr *ngFor="let x of getData | paginate: { itemsPerPage: pageSize, currentPage: p }; let i = index">
-
-
-      <td>
-        {{x.firstname}}
-      </td>
-      <td>
-        {{x.lastname}}
-      </td>
-      <td>
-        {{x.email}}
-      </td>
-      <td>
-        {{x.contact}}
-      </td>
-      <td>
-        <button type="submit " (click)="delete(x._id) " class="btn btn-danger fa fa-trash"></button>
-
-        <button type="button " (click)="open(content);updateCall(x._id,x.firstname,x.lastname,x.email,x.contact)" class="btn btn-info fa fa-pencil-square-o "
-          value="Update" data-toggle="modal" data-target="#myModal"></button>
-
-      </td>
-    </tr>
+        <tr *ngFor="let x of getData | paginate: { itemsPerPage: pageSize, currentPage: p }; let i = index">
 
 
-  </table>
+          <td>
+            {{x.firstname}}
+          </td>
+          <td>
+            {{x.lastname}}
+          </td>
+          <td>
+            {{x.email}}
+          </td>
+          <td>
+            {{x.contact}}
+          </td>
+          <td>
+            <button type="submit " (click)="delete(x._id) " class="btn btn-danger fa fa-trash"></button>
 
-</div>
-<div class="pages">
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
-</div>
+            <button type="button " (click)="open(content);updateCall(x._id,x.firstname,x.lastname,x.email,x.contact)" class="btn btn-info fa fa-pencil-square-o "
+              value="Update" data-toggle="modal" data-target="#myModal"></button>
 
-<ng-template #content let-c="close" let-d="dismiss">
-  <div class="modal-header">
-    <h4 class="modal-title">Edit User Details</h4>
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          </td>
+        </tr>
+
+
+      </table>
+
+    </div>
+    <div class="pages">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+
+    <ng-template #content let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit User Details</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
-  </div>
-  <div class="edit modal-body">
-    <form #heroForm="ngForm" class="form-group">
-      <div class="form-group">
-        <input name="firstname" type="text" required [(ngModel)]="firstname">
       </div>
-      <div class="form-group">
-        <input name="lastname" type="text" required [(ngModel)]="lastname">
+      <div class="edit modal-body">
+        <form #heroForm="ngForm" class="form-group">
+          <div class="form-group">
+            <input name="firstname" type="text" required [(ngModel)]="firstname">
+          </div>
+          <div class="form-group">
+            <input name="lastname" type="text" required [(ngModel)]="lastname">
+          </div>
+          <div class="form-group">
+            <input name="email" type="email" required [(ngModel)]="email">
+          </div>
+          <div class="form-group">
+            <input name="contact" type="number" required [(ngModel)]="contact">
+          </div>
+          <button type="Submit" data-dismiss="modal" class="btn btn-info" (click)=" update1(firstname,lastname,email,contact) ">Update</button><br><br>
+        </form>
       </div>
-      <div class="form-group">
-        <input name="email" type="email" required [(ngModel)]="email">
-      </div>
-      <div class="form-group">
-        <input name="contact" type="number" required [(ngModel)]="contact">
-      </div>
-      <button type="Submit" data-dismiss="modal" class="btn btn-info" (click)=" update1(firstname,lastname,email,contact) ">Update</button><br><br>
-    </form>
-  </div>
-  <!-- <div class="modal-footer ">
+      <!-- <div class="modal-footer ">
     <button type="button " class="btn btn-outline-dark " (click)="c( 'Close click') ">Close</button>
   </div> -->
-</ng-template>
+    </ng-template>
+  </div>
+</div>

@@ -7,23 +7,19 @@
   <li class="list-group-item">Angular Applications</li>
   <li class="list-group-item">Examples</li>
 </ul> -->
-<!-- <button type="submit" class="fa fa-power-off" (click)="logout()"></button> -->
+<!-- <a type="submit" class="fa fa-power-off" (click)="logout()"></a> -->
 <div id="sidebar-wrapper">
   <ul class="sidebar-nav">
-    <li class="sidebar-brand">
-      <a href="#">
-                        Start Bootstrap
-                    </a>
-    </li>
+    <li class="sidebar-brand"></li>
     <li>
-      <a href="#">Dashboard</a>
-    </li>
+      <a class="fa fa-home" [routerLink]="['/welcome']" [routerLinkActive]="['router-link-active']">  Dashboard</a>
+    </li><br>
     <li>
-      <a href="#">Shortcuts</a>
-    </li>
+      <a class="fa fa-users" [routerLink]="['/viewusers']" [routerLinkActive]="['router-link-active']"> View Users</a>
+    </li><br>
     <li>
-      <a href="#">Overview</a>
-    </li>
+      <a class="fa fa-user-plus" [routerLink]="['/newuser']" [routerLinkActive]="['router-link-active']"> Add New User</a>
+    </li><br>
     <li>
       <a href="#">Events</a>
     </li>
@@ -34,7 +30,7 @@
       <a href="#">Services</a>
     </li>
     <li>
-      <button type="submit" class="fa fa-power-off btn btn-danger bt" (click)="logout()"></button>
+      <button type="submit" class="fa fa-power-off bt btn btn-danger" (click)="logout()"></button>
     </li>
   </ul>
 </div>
