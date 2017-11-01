@@ -47,6 +47,7 @@ export class DashboardHomeComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
     }).then(function () {
+      this.user.delete(i);
       swal(
         'Deleted!',
         'Your file has been deleted.',
