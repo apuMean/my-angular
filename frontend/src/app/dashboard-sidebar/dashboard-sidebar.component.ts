@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard-sidebar',
   templateUrl: './dashboard-sidebar.component.html',
@@ -7,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardSidebarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
+  logout() {
+    var data = { token: localStorage.getItem('token'), email: localStorage.getItem('email') };
+    localStorage.removeItem('token');
 
+    localStorage.removeItem('userloggedin');
+    this.router.navigateByUrl("/");
+  }
 
 }

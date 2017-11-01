@@ -34,11 +34,11 @@ export class DashboardHomeComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log("======ngOnInit=======");
+    console.log("Inside ngOnInit");
 
   }
   delete(i) {
-    var a = swal({
+    swal({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
       type: 'warning',
@@ -46,18 +46,49 @@ export class DashboardHomeComponent implements OnInit {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
-    }).then(function () {
-      this.user.delete(i);
-      swal(
-        'Deleted!',
-        'Your file has been deleted.',
-        'success'
-      )
+    }).then(function (isConfirm) {
+      if (isConfirm) {
+        console.log('Deleting.....');
+        swal("Deleted!", "Your file has been deleted.", "success").then(function () {
+          console.log('Deleted successfully');
+          this.user.delete(i);
+          console.log('after deletion');
+        });
+      } else {
+        swal("Cancelled", "Your file is safe", "error");
+      }
+      // this.user.delete(i);
+      // swal(
+      //   'Deleted!',
+      //   'Your file has been deleted.',
+      //   'success'
+      // )
     });
     // var a = confirm("Are you sure , you want to delete...?");
-    if (a) {
-      this.user.delete(i);
-    }
+    // if (a) {
+    //   this.user.delete(i);
+    // }
+    // swal({
+    // title: 'Hello',
+    // text: "session('flash_message_delete.message')",   
+    // type: "session('flash_message_delete.level')",   
+    // showCancelButton: true,   
+    // confirmButtonColor: "#DD6B55",   
+    // confirmButtonText: "Yes, delete it!",   
+    // cancelButtonText: "No, cancel please!",   
+    // closeOnConfirm: false,   
+    // closeOnCancel: false
+    // },function(isConfirm){   
+    //   if (isConfirm) 
+    //     {     
+    //       swal("Deleted!", "Your file has been deleted.", "success");   
+    //     } 
+
+    //   else
+    //     {     
+    //       swal("Cancelled", "Your file is safe", "error");   
+    //     }
+    //   });
   }
 
 

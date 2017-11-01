@@ -102,3 +102,7 @@
     margin-right: 0;
   }
 }
+
+.bt {
+  border-radius: 50%;
+}
