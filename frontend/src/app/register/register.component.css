@@ -95,3 +95,11 @@
   line-height: 1.33;
   border-radius: 35px;
 }
+
+#toast-container {
+  background-color: lightgrey;
+  padding: 20px;
+  border-radius: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
+}

@@ -4,6 +4,9 @@ import { Observable } from 'rxjs/Observable';
 import { Router } from "@angular/router";
 import 'rxjs/add/operator/toPromise';
 import { UsersSignUp } from './../register/signup';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import swal from 'sweetalert2';
+
 
 @Injectable()
 export class SignupService {
@@ -12,17 +15,50 @@ export class SignupService {
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
 
-  save(data): Promise<UsersSignUp> {
-    console.log(data);
-    this.http.post(this.connection, data, { headers: this.headers }).toPromise();
+
+
+
+
+  save(data): Observable<any> {
+
+
+    this.http.post(this.connection, data, { headers: this.headers }).subscribe((result) => {
+
+      if (result.json().status == 200) {
+        swal({
+          position: 'top-right',
+          type: 'success',
+          title: 'You are successfully registered with Monster Hub',
+          showConfirmButton: false,
+          timer: 3000
+        })
+        this.router.navigate(['../login'])
+      }
+      else if (result.json().status == 299) {
+
+        swal(
+          'Oops...',
+          'email already exists',
+          'error'
+        )
+        window.location.reload(true);
+
+      }
+      else {
+        console.log("err")
+      }
+
+
+    });
     return;
   }
-
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
+
 }
+
 
 
 

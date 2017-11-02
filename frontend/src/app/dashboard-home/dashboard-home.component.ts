@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ViewUsersService } from './../services/view-users.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import swal from 'sweetalert2';
-import { SweetAlertService } from 'angular-sweetalert-service';
 @Component({
   selector: 'app-dashboard-home',
   templateUrl: './dashboard-home.component.html',
@@ -52,6 +51,7 @@ export class DashboardHomeComponent implements OnInit {
     }).then((isConfirm) => {
       if (isConfirm) {
         var userDelete = this.user.delete(i);
+        window.location.reload(true);
       }
       else {
         console.log("unsuccessful.............");
@@ -69,7 +69,7 @@ export class DashboardHomeComponent implements OnInit {
     // }).then(function (isConfirm) {
     //   var userDelete = this.user.delete(i);
     // });
-
+    // window.location.reload(true);
   }
 
 
@@ -104,7 +104,7 @@ export class DashboardHomeComponent implements OnInit {
     this.user.update(firstname, lastname, email, contact);
 
 
-
+    window.location.reload(true);
   }
   open(content) {
     this.modalService.open(content).result.then((result) => {

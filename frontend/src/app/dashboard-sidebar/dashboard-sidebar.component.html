@@ -20,7 +20,7 @@
     <li>
       <a class="fa fa-user-plus" [routerLink]="['/newuser']" [routerLinkActive]="['router-link-active']"> Add New User</a>
     </li><br>
-    <li>
+    <!-- <li>
       <a href="#">Events</a>
     </li>
     <li>
@@ -28,9 +28,9 @@
     </li>
     <li>
       <a href="#">Services</a>
-    </li>
+    </li> -->
     <li>
-      <button type="submit" class="fa fa-power-off bt btn btn-danger" (click)="logout()"></button>
+      <button type="submit" class="fa fa-power-off bt btn btn-danger" (click)="logout()" placement="bottom" ngbTooltip="LogOut"></button>
     </li>
   </ul>
 </div>

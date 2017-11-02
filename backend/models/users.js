@@ -12,6 +12,9 @@ var userSchema = new mongoose.Schema({
     },
     email: {
         type: String
+        // index: {
+        //     unique: true
+        // }
     },
     password: {
         type: String

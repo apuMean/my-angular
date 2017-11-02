@@ -41,12 +41,9 @@ exports.registerUser = function (req, res, next) {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         email: req.body.email,
-        re_email: req.body.re_email,
         password: req.body.password,
-        re_password: req.body.re_password,
-        city: req.body.city,
         contact: req.body.contact,
-        verificationTokenEmailedToUser: token
+
     });
 
     // //console.log(token)
@@ -66,12 +63,37 @@ exports.registerUser = function (req, res, next) {
     //         console.log(error);
     //     } else {}
     // });
-    data.save(function (err) {
+
+    User.findOne({
+        email: req.body.email
+    }, function (err, em) {
         if (err) {
-            console.log(err);
-        } else {}
+            console.log(err)
+        } else if (em) {
+            console.log("email address already exist..!")
+            res.json({
+                status: 299
+            });
+        } else {
+            data.save(function (err) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.json({
+                        status: 200
+                    })
+                }
+            });
+        }
+
     });
-}
+
+    //res.send(authResult);
+};
+
+
+
+
 
 
 /* 
@@ -206,19 +228,27 @@ exports.deleteuser = function (req, res) {
     }, function (err, data) {
         if (err) {
             console.log(" delete");
+            res.json({
+                status: 299,
+
+            });
         } else {
             console.log(data);
+            res.json({
+                status: 200,
+
+            });
         }
     });
-    User.find(function (err, data) {
-        if (err) {
-            console.log("data ");
-        }
-        if (data) {
-            console.log("doing delete ");
-            res.json(data);
-        }
-    });
+    // User.find(function (err, data) {
+    //     if (err) {
+    //         console.log("data ");
+    //     }
+    //     if (data) {
+    //         console.log("doing delete ");
+    //         res.json(data);
+    //     }
+    // });
     console.log("delete ");
 }
 
