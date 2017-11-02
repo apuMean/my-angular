@@ -34,7 +34,7 @@ export class ViewUsersService {
     this.delid = i;
     // console.log("d", d);
 
-    this.http.post(this.deleteuserUrl, { body: this.delid }).subscribe(userviewdata => {
+    return this.http.post(this.deleteuserUrl, { body: this.delid })/* .subscribe(userviewdata => {
       console.log("user data after delete", userviewdata);
       // this.udata = userviewdata.json();
       if (userviewdata.json().status == 200) {
@@ -52,11 +52,11 @@ export class ViewUsersService {
       else {
         console.log(" else ");
       }
-    });
+    }); */
 
 
     // console.log("Index==of delete", i);
-    return;
+    // return;
   }
 
 
@@ -69,11 +69,12 @@ export class ViewUsersService {
   update(firstname, lastname, email, contact): Observable<any> {
     console.log("Index==of update", this.editid);
     let x = this.editid;
-    this.http.post(this.edituserUrl, { body: x, firstname, lastname, email, contact }).subscribe((result) => {
-      console.log("user data after update", result);
-      this.udata = result.json();
-    });
-    return;
+    return this.http.post(this.edituserUrl, { body: x, firstname, lastname, email, contact })
+    // .subscribe((result) => {
+    //   console.log("user data after update", result);
+    //   this.udata = result.json();
+    // });
+    // return;
   }
 
 }
