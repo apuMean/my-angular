@@ -51,6 +51,7 @@ export class DashboardHomeComponent implements OnInit {
     }).then((isConfirm) => {
       if (isConfirm) {
         var userDelete = this.user.delete(i).subscribe(response => {
+          console.log("delete response", response)
           if (response.status == 200) {
             this.user.view().subscribe(value => {
               this.getData = value.json();
@@ -93,16 +94,17 @@ export class DashboardHomeComponent implements OnInit {
       'user data has been updated successfully!',
       'success'
     ).then(() => {
-      var userUpdate = this.user.update(firstname, lastname, email, contact).subscribe(response => {
-        if (response.status == 200) {
-          this.user.view().subscribe(value => {
-            this.getData = value.json();
+      var userUpdate = this.user.update(firstname, lastname, email, contact).subscribe(data => {
+        console.log("response is .....", data)
+        console.log("response status is .....", data.status)
 
-          })
-        } else {
-          console.log("delete failed")
-        }
+        this.user.view().subscribe(value => {
+          this.getData = value.json();
+
+        })
+
       });
+
     })
 
 
@@ -128,5 +130,6 @@ export class DashboardHomeComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+
 
 }

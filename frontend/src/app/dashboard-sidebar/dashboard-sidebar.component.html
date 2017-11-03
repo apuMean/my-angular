@@ -8,11 +8,22 @@
   <li class="list-group-item">Examples</li>
 </ul> -->
 <!-- <a type="submit" class="fa fa-power-off" (click)="logout()"></a> -->
+<!-- {{firstname}} {{lastname}} {{email}} -->
+<!-- <img src={{imgpath}} width="20px" height="20px"> -->
+<!-- <img src='./assets/images/42204196ca5196a7c52cd2a8fd2b1e87' width="50px" height="50px"> -->
+
 <div id="sidebar-wrapper">
+  <img src={{imgpath}} class="profileImage">
   <ul class="sidebar-nav">
-    <li class="sidebar-brand"></li>
+
+    <li class="sidebar-brand username"><strong>{{firstname}} {{lastname}}</strong>
+    </li>
+    <li><br></li>
     <li>
       <a class="fa fa-home" [routerLink]="['/welcome']" [routerLinkActive]="['router-link-active']">  Dashboard</a>
+    </li><br>
+    <li>
+      <a class="fa fa-home" [routerLink]="['/imageupload']" [routerLinkActive]="['router-link-active']">Upload Picture</a>
     </li><br>
     <li>
       <a class="fa fa-users" [routerLink]="['/viewusers']" [routerLinkActive]="['router-link-active']"> View Users</a>

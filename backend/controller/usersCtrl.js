@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var User = require('../models/users');
 //var Common = require('../models/saveUser');
 var jwt = require('jsonwebtoken');
+var router = express.Router();
 //var aes256 = require('aes256');
 //var algorithm = 'aes-256-ctr';
 //var privateKey = '37LvDSm4XvjYOh9Y';
@@ -11,8 +12,30 @@ var jwt = require('jsonwebtoken');
 //var nodemailer = require('nodemailer');
 //var smtpTransport = require('nodemailer-smtp-transport');
 var jsonwebtoken = require("jsonwebtoken")
+var multer = require('multer');
+var DIR = '../frontend/src/assets/images/';
+var upload = multer({
+    dest: DIR,
+    filename: function (req, file, cb) {
+
+        cb(null, file.originalname)
+    }
+}).single('photo');
 
 
+
+
+//require express library
+//require the express router
+
+
+
+
+//require multer for the file uploads
+// set the directory for the uploads to the uploaded to
+//define the type of upload multer would be doing and pass in its destination, in our case, its a single file with the name photo
+
+/* GET home page. */
 // var transporter = nodemailer.createTransport(smtpTransport({
 //     service: "Gmail",
 //     auth: {
@@ -104,7 +127,7 @@ exports.registerUser = function (req, res, next) {
 @modified_by: [akshayP,sandeepK]
 */
 exports.loginUser = function (req, res) {
-    console.log("i m in login......................")
+    console.log("i m in login......................", req.body)
     User.findOne({
         email: req.body.email,
         password: req.body.password
@@ -275,6 +298,19 @@ exports.edituser = function (req, res) {
             }
         },
         function (err, result) {
+            // if (err) {
+            //     console.log(" error--->", err);
+            //     res.json({
+            //         status: 299,
+
+            //     });
+            // } else {
+            //     console.log(result);
+            //     res.json({
+            //         status: 200,
+
+            //     });
+            // }
             if (err) throw err;
             else console.log("Record Updated");
 
@@ -292,4 +328,72 @@ exports.edituser = function (req, res) {
     });
     console.log("edit successfull");
 
+}
+
+
+
+//uploading image
+
+exports.upload = function (req, res, next) {
+    console.log('inside fileUpload fileUpload');
+    var mailID = req.headers.authorization;
+    console.log('mailIDmailID', mailID);
+    var imgpath = '';
+    upload(req, res, function (err) {
+        if (err) {
+            // An error occurred when uploading
+            console.log(err);
+            return res.status(422).send("an Error occured")
+        }
+
+        // // No error occured.
+        imgpath = req.file.path;
+
+        console.log("path of an image ", imgpath)
+        // return res.send("Upload Completed for " + path);
+
+        // var data = new User({
+
+        //     path: imgpath
+
+        // });
+        // console.log('data.path', data.path)
+
+
+
+        User.update({
+            email: mailID
+        }, {
+            $set: {
+                path: imgpath,
+            }
+        }, function (err, data) {
+            if (err) {
+                console.log("error in delete");
+            } else {
+                console.log(data);
+            }
+        });
+
+
+    });
+
+}
+
+
+
+exports.showdetails = function (req, res, next) {
+    var email = req.body.body;
+    console.log('mailIdmailId', email)
+    console.log('inside showUsername')
+    User.findOne({
+        email: email
+    }, function (err, data) {
+        if (err) {
+            console.log('error', err)
+        } else {
+            console.log('data1data1', data)
+            res.json(data);
+        }
+    });
 }

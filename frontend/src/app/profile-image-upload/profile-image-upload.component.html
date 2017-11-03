@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-sm-2 col-md-2 col-xs-2">
+    <app-dashboard-sidebar></app-dashboard-sidebar>
+  </div>
+  <div class="col-sm-10 col-md-10 col-xs-10 ">
+    <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+
+    <button type="button" class="btn btn-success bt" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+      Upload with ng-2 file uploader
+    </button>
+  </div>
+</div>

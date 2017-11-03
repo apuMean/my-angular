@@ -25,6 +25,7 @@
     "angular2-logger": "^0.6.0",
     "core-js": "^2.4.1",
     "font-awesome": "^4.6.3",
+    "ng2-file-upload": "^1.2.1",
     "ng2-log-service": "^1.0.3",
     "ng2-toastr": "^4.1.2",
     "ngx-pagination": "^3.0.3",

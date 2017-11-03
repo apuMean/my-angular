@@ -110,3 +110,19 @@
   border-radius: 50%;
   margin-left: 20%;
 }
+
+.sidebar-brand {
+  color: white;
+}
+
+.profileImage {
+  /* border-radius: 50%; */
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+}
+
+.username {
+  padding-left: 1.8em
+}

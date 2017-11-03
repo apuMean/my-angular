@@ -11,6 +11,10 @@ router.get('/', function (req, res, next) {
 
 
 
+router.post('/showdetails', usersCtrl.showdetails)
+
+router.post('/upload', usersCtrl.upload)
+
 /* 
 @functionality:login regular users
 */

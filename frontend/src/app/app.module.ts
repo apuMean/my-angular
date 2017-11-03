@@ -15,6 +15,7 @@ import { RegisterComponent } from './register/register.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
+import { FileSelectDirective } from 'ng2-file-upload';
 // import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { Logger } from "angular2-logger/core";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,7 +28,8 @@ import { DashboardHomeComponent } from './dashboard-home/dashboard-home.componen
 import { ViewUsersService } from './services/view-users.service'
 
 import { DashboardWelcomeComponent } from './dashboard-welcome/dashboard-welcome.component';
-import { DashboardAdduserComponent } from './dashboard-adduser/dashboard-adduser.component'; // ADD THIS
+import { DashboardAdduserComponent } from './dashboard-adduser/dashboard-adduser.component';
+import { ProfileImageUploadComponent } from './profile-image-upload/profile-image-upload.component'; // ADD THIS
 
 const appRoutes: Routes = [
   // { path: 'dashboard', canActivate: [AuthGuard], component: DashboardComponent },
@@ -37,7 +39,8 @@ const appRoutes: Routes = [
   { path: 'dashboard', canActivate: [AuthGuard], component: DashboardComponent },
   { path: 'viewusers', component: DashboardHomeComponent },
   { path: 'welcome', component: DashboardWelcomeComponent },
-  { path: 'newuser', component: DashboardAdduserComponent },
+  { path: 'imageupload', component: ProfileImageUploadComponent },
+
   { path: '**', component: NotFoundComponent },
 
 ];
@@ -54,7 +57,9 @@ const appRoutes: Routes = [
     DashboardSidebarComponent,
     DashboardHomeComponent,
     DashboardWelcomeComponent,
-    DashboardAdduserComponent
+    DashboardAdduserComponent,
+    FileSelectDirective,
+    ProfileImageUploadComponent
   ],
   imports: [
     BrowserModule,

@@ -34,3 +34,12 @@
   border-left: 5px solid #42A948;
   /* red */
 }
+
+.eye {
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border-top-right-radius: 50%;
+  float: right;
+  background-color: white;
+}

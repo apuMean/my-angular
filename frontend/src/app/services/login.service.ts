@@ -48,7 +48,7 @@ export class LoginService {
 
     this.http.post(this.connection, data, { headers: this.headers }).subscribe((result) => {
 
-      if (result.status == 200) {
+      if (result.json().status == 200) {
         console.log("in mainpage", result.status)
         console.log("Login success result data", result);
         localStorage.setItem('token', result.json().token);
@@ -57,7 +57,7 @@ export class LoginService {
         localStorage.setItem('email', result.json().email);
         this.router.navigate(['/dashboard']);
       }
-      else if (result.status == 299) {
+      else if (result.json().status == 299) {
 
         console.log("in dashboard", result.status)
         alert("invalid user");

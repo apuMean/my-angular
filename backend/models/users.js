@@ -21,6 +21,9 @@ var userSchema = new mongoose.Schema({
     },
     contact: {
         type: Number
+    },
+    path: {
+        type: String
     }
 
 

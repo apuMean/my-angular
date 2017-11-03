@@ -103,3 +103,12 @@
   margin-left: 20px;
   margin-right: 20px;
 }
+
+.eye {
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border-top-right-radius: 50%;
+  float: right;
+  background-color: white;
+}
