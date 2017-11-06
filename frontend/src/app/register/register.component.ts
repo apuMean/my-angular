@@ -17,6 +17,10 @@ import swal from 'sweetalert2';
 
 @Injectable()
 export class RegisterComponent implements OnInit {
+  public account = {
+    password: <string>null
+  };
+  public barLabel: string = "Password strength:";
 
   signupForm: FormGroup;
 

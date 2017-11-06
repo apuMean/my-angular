@@ -16,6 +16,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 import { FileSelectDirective } from 'ng2-file-upload';
+import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
+
+
 // import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { Logger } from "angular2-logger/core";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -72,6 +75,8 @@ const appRoutes: Routes = [
     FormsModule,
     NgbModule.forRoot(),
     NgxPaginationModule, BrowserAnimationsModule,
+    PasswordStrengthBarModule,
+
     //  ToastModule.forRoot(),
 
   ],

@@ -67,7 +67,8 @@
 
       <div class="form-group">
 
-        <input type="password" name="password" formControlName="password" class="form-control" id="password" placeholder="Enter Your Password ">
+        <input type="password" name="password" [(ngModel)]="account.password" formControlName="password" class="form-control" id="password"
+          placeholder="Enter Your Password ">
         <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
 
           <div *ngIf="password.errors.required">
@@ -83,6 +84,8 @@
             Password must contain atleast 1 uppercase,1 lowercase,1 digit & 1 special character.
           </div>
         </div>
+        <ng2-password-strength-bar [passwordToCheck]="account.password" [barLabel]="barLabel">
+        </ng2-password-strength-bar>
 
         <button type="button" class="fa fa-eye eye btn btn-xl" id="eye" onclick="if(password.type=='text')password.type='password'; else password.type='text';"
           placement="" ngbTooltip="Show/Hide Password"></button>

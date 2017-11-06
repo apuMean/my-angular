@@ -13,6 +13,10 @@ import swal from 'sweetalert2';
   styleUrls: ['./dashboard-adduser.component.css']
 })
 export class DashboardAdduserComponent implements OnInit {
+  public account = {
+    password: <string>null
+  };
+  public barLabel: string = "Password strength:";
   signupForm: FormGroup;
   constructor(private user: DashboardAdduserService, public fb: FormBuilder, private router: Router) {
 
