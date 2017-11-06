@@ -109,6 +109,8 @@
   border-color: brown;
   border-radius: 50%;
   margin-left: 20%;
+  cursor: pointer;
+  cursor: hand;
 }
 
 .sidebar-brand {
@@ -125,4 +127,9 @@
 
 .username {
   padding-left: 1.8em
+}
+
+a {
+  cursor: pointer;
+  cursor: hand;
 }

@@ -13,9 +13,9 @@
     </div>
 
     <div class="col-sm-3 col-md-3 col-xs-3">
-      <div class="buttons">
-        <button class="btn btn-md btn-outline-info " [routerLink]="['/login']" [routerLinkActive]="['router-link-active']">Login</button>
-        <button class="btn btn-md btn-outline-info " [routerLink]="['/register']" [routerLinkActive]="['router-link-active']">Register</button>
+      <div *ngIf="checkLogin" class="buttons">
+        <button class="btn btn-md btn-outline-info logbt" [routerLink]="['/login']" [routerLinkActive]="['router-link-active']">Login</button>
+        <button class="btn btn-md btn-outline-info regbt" [routerLink]="['/register']" [routerLinkActive]="['router-link-active']">Register</button>
       </div>
     </div>
   </div>

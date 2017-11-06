@@ -1,6 +1,6 @@
 .buttons {
   text-align: right;
-  margin-top: 30px
+  margin-top: 30px;
 }
 
 .modal-content {
@@ -28,4 +28,14 @@ hr.style13 {
   box-shadow: 0 10px 10px -10px black inset;
   margin-top: 0rem;
   margin-bottom: auto;
+}
+
+.logbt {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.regbt {
+  cursor: pointer;
+  cursor: hand;
 }

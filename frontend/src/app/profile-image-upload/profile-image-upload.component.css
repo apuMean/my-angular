@@ -1,3 +1,8 @@
  .input {
    margin: auto
  }
+
+ .btn {
+   cursor: pointer;
+   cursor: hand;
+ }

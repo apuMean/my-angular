@@ -22,11 +22,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { LoginService } from './services/login.service';
 import { SignupService } from './services/register.service';
+import { ViewUsersService } from './services/view-users.service';
+import { DashboardAdduserService } from './services/dashboard-adduser.service';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar.component';
-import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component'
-import { ViewUsersService } from './services/view-users.service'
-
+import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
 import { DashboardWelcomeComponent } from './dashboard-welcome/dashboard-welcome.component';
 import { DashboardAdduserComponent } from './dashboard-adduser/dashboard-adduser.component';
 import { ProfileImageUploadComponent } from './profile-image-upload/profile-image-upload.component'; // ADD THIS
@@ -36,10 +37,11 @@ const appRoutes: Routes = [
   { path: '', component: MainBodyComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'adduser', canActivate: [AuthGuard], component: DashboardAdduserComponent },
   { path: 'dashboard', canActivate: [AuthGuard], component: DashboardComponent },
-  { path: 'viewusers', component: DashboardHomeComponent },
-  { path: 'welcome', component: DashboardWelcomeComponent },
-  { path: 'imageupload', component: ProfileImageUploadComponent },
+  { path: 'viewusers', canActivate: [AuthGuard], component: DashboardHomeComponent },
+  { path: 'welcome', canActivate: [AuthGuard], component: DashboardWelcomeComponent },
+  { path: 'imageupload', canActivate: [AuthGuard], component: ProfileImageUploadComponent },
 
   { path: '**', component: NotFoundComponent },
 
@@ -73,7 +75,7 @@ const appRoutes: Routes = [
     //  ToastModule.forRoot(),
 
   ],
-  providers: [LoginService, Logger, SignupService, AuthGuard, ViewUsersService,],
+  providers: [LoginService, Logger, SignupService, AuthGuard, ViewUsersService, DashboardAdduserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

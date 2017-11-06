@@ -1,0 +1,118 @@
+.tag {
+  text-align: center;
+  color: black;
+  font-size: 60px;
+  font-family: 'Creepster', cursive;
+  text-decoration: none !important;
+}
+
+.wrapper {
+  text-align: center;
+}
+
+.submit_button {
+  position: absolute;
+  margin: auto;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.reset_button {
+  position: relative;
+  margin-left: 120px;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.ng-valid.required {
+  border-left: 5px solid pink;
+  /* green */
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #a94442;
+  /* red */
+}
+
+.ng-valid:not(form) {
+  border-left: 5px solid #42A948;
+  /* red */
+}
+
+.button {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.form__socialButton:first-of-type {
+  margin-bottom: 10px;
+}
+
+.buttonFacebook {
+  background-color: #3b5998;
+  background-image: url(https://static.canva.com/static/images/facebook_button_icon.png);
+  background-image: url(https://static.canva.com/static/images/facebook_button_icon.svg);
+  background-repeat: no-repeat;
+  background-position: 10px;
+  background-size: 30px;
+  padding-left: 40px;
+  overflow: hidden;
+  margin-top: 10px
+}
+
+.membership {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #fffff0;
+}
+
+.para {
+  color: brown;
+  font-size: 20px;
+  text-align: center;
+}
+
+.btn-circle {
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  border-radius: 20px;
+}
+
+.btn-circle.btn-lg {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 12px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+
+.btn-circle.btn-lg {
+  width: 90px;
+  height: 90px;
+  padding: 10px 16px;
+  font-size: 12px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
+
+#toast-container {
+  background-color: lightgrey;
+  padding: 20px;
+  border-radius: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.eye {
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border-top-right-radius: 50%;
+  float: right;
+  background-color: white;
+}

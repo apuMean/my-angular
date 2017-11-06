@@ -2,15 +2,8 @@ var express = require('express');
 var path = require('path');
 var mongoose = require('mongoose');
 var User = require('../models/users');
-//var Common = require('../models/saveUser');
 var jwt = require('jsonwebtoken');
 var router = express.Router();
-//var aes256 = require('aes256');
-//var algorithm = 'aes-256-ctr';
-//var privateKey = '37LvDSm4XvjYOh9Y';
-//var crypto = require('crypto');
-//var nodemailer = require('nodemailer');
-//var smtpTransport = require('nodemailer-smtp-transport');
 var jsonwebtoken = require("jsonwebtoken")
 var multer = require('multer');
 var DIR = '../frontend/src/assets/images/';
@@ -25,33 +18,6 @@ var upload = multer({
 
 
 
-//require express library
-//require the express router
-
-
-
-
-//require multer for the file uploads
-// set the directory for the uploads to the uploaded to
-//define the type of upload multer would be doing and pass in its destination, in our case, its a single file with the name photo
-
-/* GET home page. */
-// var transporter = nodemailer.createTransport(smtpTransport({
-//     service: "Gmail",
-//     auth: {
-//         user: 'vishaka.renge14@gmail.com',
-//         pass: 'VISHAKA@14'
-//     }
-// }));
-
-
-/* 
-@functionality: Registering users and sending email verification
-@author: vishakaR
-@created: 4sept
-@last_modified: 6sept
-@modified_by: [sandeepK]
-*/
 exports.registerUser = function (req, res, next) {
 
     //generating token
@@ -69,23 +35,6 @@ exports.registerUser = function (req, res, next) {
 
     });
 
-    // //console.log(token)
-    // var linkToBeSend = "http" + ":" + "//localhost:3000/api/activateAccount?token=" + token
-    // var link = ' <a href=" ' + linkToBeSend + ' ">CLICK HERE</a> ';
-    // //console.log(link)
-
-    // var mailOptions = {
-    //     from: 'vishaka.renge14@gmail.com',
-    //     to: req.body.email,
-    //     subject: 'Verification Mail',
-    //     html: '<body> <div><h1>You have successfully registered.' + link + 'to activate</h1></div></body>',
-    //     text: 'HIVE Registered'
-    // };
-    // transporter.sendMail(mailOptions, function (error, info) {
-    //     if (error) {
-    //         console.log(error);
-    //     } else {}
-    // });
 
     User.findOne({
         email: req.body.email
@@ -111,7 +60,7 @@ exports.registerUser = function (req, res, next) {
 
     });
 
-    //res.send(authResult);
+
 };
 
 
@@ -119,13 +68,6 @@ exports.registerUser = function (req, res, next) {
 
 
 
-/* 
-@functionality: loginUser registered user
-@author: vishakaR
-@created: 4 sept
-@last_modified: 5 sept
-@modified_by: [akshayP,sandeepK]
-*/
 exports.loginUser = function (req, res) {
     console.log("i m in login......................", req.body)
     User.findOne({
@@ -175,47 +117,10 @@ exports.loginUser = function (req, res) {
 
     });
 
-    //res.send(authResult);
 };
 
 
 
-
-// exports.loginUser = function (req, res) {
-//     console.log("data received", req.body);
-
-//     User.findOne({
-//         email: req.body.email,
-//         password: req.body.password
-//     }, function (err, userlogin) {
-//         if (err) {
-//             console.log(err)
-//         }
-//         if (!userlogin) {
-//             console.log("200", userlogin)
-//             return res.status(200).send({});
-//         } else {
-//             console.log("299")
-//             return res.status(299).send({});
-//         }
-
-
-
-//     });
-
-
-
-// };
-
-
-
-/* 
-@functionality: setting verificationTokenEmailedToUser "True"
-@author: sandeepK
-@created: 6 Sept
-@last_modified:
-@modified_by: []
-*/
 exports.verifyUserEmail = function (req, res) {
 
     //mongo query to set flag
@@ -298,19 +203,7 @@ exports.edituser = function (req, res) {
             }
         },
         function (err, result) {
-            // if (err) {
-            //     console.log(" error--->", err);
-            //     res.json({
-            //         status: 299,
 
-            //     });
-            // } else {
-            //     console.log(result);
-            //     res.json({
-            //         status: 200,
-
-            //     });
-            // }
             if (err) throw err;
             else console.log("Record Updated");
 
@@ -335,9 +228,9 @@ exports.edituser = function (req, res) {
 //uploading image
 
 exports.upload = function (req, res, next) {
-    console.log('inside fileUpload fileUpload');
+    console.log('inside fileUpload ');
     var mailID = req.headers.authorization;
-    console.log('mailIDmailID', mailID);
+    console.log('mailID', mailID);
     var imgpath = '';
     upload(req, res, function (err) {
         if (err) {
@@ -350,14 +243,6 @@ exports.upload = function (req, res, next) {
         imgpath = req.file.path;
 
         console.log("path of an image ", imgpath)
-        // return res.send("Upload Completed for " + path);
-
-        // var data = new User({
-
-        //     path: imgpath
-
-        // });
-        // console.log('data.path', data.path)
 
 
 

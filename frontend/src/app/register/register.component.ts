@@ -6,9 +6,7 @@ import { UsersSignUp } from "./../register/signup";
 import { SignupService } from './../services/register.service';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import swal from 'sweetalert2';
-// import { ToastsManager } from 'ng2-toastr';
-// import 'ng2-toastr/ng2-toastr.js';
-// import 'ng2-toastr/bundles/ng2-toastr.min.css';
+
 
 @Component({
   selector: 'app-register',
@@ -19,14 +17,9 @@ import swal from 'sweetalert2';
 
 @Injectable()
 export class RegisterComponent implements OnInit {
-  // swal: any;
-  signupForm: FormGroup;
-  // private viewContainerRef: ViewContainerRef;
-  // constructor(private user: SignupService, public fb: FormBuilder, public toastr: ToastsManager, viewContainerRef: ViewContainerRef) {
 
-  //   this.viewContainerRef = viewContainerRef;
-  //   this.toastr.setRootViewContainerRef(viewContainerRef);
-  // }
+  signupForm: FormGroup;
+
   constructor(private user: SignupService, public fb: FormBuilder, private router: Router) {
 
   }
@@ -34,27 +27,26 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
 
     this.signupForm = this.fb.group({
-      firstname: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(10), Validators.pattern('[a-zA-Z]+')]),
-      lastname: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(10), Validators.pattern('[a-zA-Z]+')]),
-      email: new FormControl('', [Validators.required, Validators.email, Validators.minLength(10), Validators.maxLength(30)]),
-      password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(15), Validators.pattern('^[a-zA-Z0-9]*$')]),
+      firstname: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern('(?:[A-Z][a-z]+\s?)+')]),
+      lastname: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern('(?:[A-Z][a-z]+\s?)+')]),
+      email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(40)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(10), Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{4,8}$')]),
       contact: new FormControl('', [Validators.maxLength(10), Validators.minLength(10)]),
     }
     );
   }
 
   public onSubmit(data) {
-    // this.toastr.success('Hi there', 'Success');
 
-
-
-    // alert("Registered Successfully.....")
-    //console.log("Inside ADDD-----------------", data);
-    //Validators.minLength(8), Validators.maxLength(15), Validators.pattern('^[a-zA-Z0-9]*$')
     this.user.save(data);
-    // this.router.navigate(['../login'])
+
   }
 
+  get firstname() { return this.signupForm.get('firstname'); }
+  get lastname() { return this.signupForm.get('lastname'); }
+  get email() { return this.signupForm.get('email'); }
+  get password() { return this.signupForm.get('password'); }
+  get contact() { return this.signupForm.get('contact'); }
 
 }
 
